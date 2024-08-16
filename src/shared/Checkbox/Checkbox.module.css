@@ -1,0 +1,50 @@
+.label {
+  position: relative;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding-block: 2px;
+
+  &:focus-visible {
+    border: 2px solid var(--primary-color);
+    outline: none;
+  }
+}
+
+.input {
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0);
+  opacity: 0;
+  visibility: visible;
+}
+
+.checkbox {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--text-color);
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+.text {
+  padding-left: 30px;
+}
+
+.default {
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.input:checked + .checkbox:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--text-color);
+  content: '';
+  transform: translate(-50%, -50%);
+}

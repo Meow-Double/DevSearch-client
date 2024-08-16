@@ -15,6 +15,7 @@ html {
   display: flex;
   min-height: 100%;
   flex-direction: column;
+  justify-content: center;
 }
 
 main {

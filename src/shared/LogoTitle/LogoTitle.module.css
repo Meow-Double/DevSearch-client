@@ -1,5 +1,5 @@
 .title {
-  color: #ffd057;
+  color: var(--accent-color);
 }
 
 .text {
