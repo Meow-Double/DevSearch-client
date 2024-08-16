@@ -1,0 +1,12 @@
+.title {
+  color: #ffd057;
+}
+
+.text {
+  color: inherit;
+  text-transform: uppercase;
+}
+
+.children {
+  color: var(--primary-color);
+}

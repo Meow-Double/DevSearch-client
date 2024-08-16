@@ -1,0 +1,12 @@
+.header {
+  margin-bottom: 20px;
+  background-color: var(--section-color);
+  padding-block: 20px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}

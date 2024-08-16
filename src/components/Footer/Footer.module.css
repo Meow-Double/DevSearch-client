@@ -1,0 +1,13 @@
+.footer {
+  background-color: var(--section-color);
+  padding-block: 30px;
+}
+
+.title{
+    margin-bottom: 12px;
+}
+
+.copyright{
+    color:var(--text-color);
+    font-size: 14px
+}
