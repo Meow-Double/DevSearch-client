@@ -3,7 +3,9 @@
   --section-color: #3a3939;
   --primary-color: #fff;
   --text-color: #d4d3d3;
-  --accent-color: #ffd057;
-  --accent-color7: rgb(255 208 87 / 70%);
+  --accent-color: #8bc35f;
+  --accent-color7: rgb(139 195 95 / 70%);
+
+  /* --accent-color7: rgb(255 208 87 / 70%); */
   --error-color: #f00;
 }

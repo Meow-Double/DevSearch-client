@@ -19,3 +19,7 @@
     background-color: var(--accent-color);
   }
 }
+
+.outlined {
+  padding: 0;
+}

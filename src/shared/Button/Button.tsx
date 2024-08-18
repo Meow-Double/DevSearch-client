@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { ComponentProps, ReactNode } from 'react';
 import styles from './Button.module.css';
 
-type ButtonVariant = 'primary';
+type ButtonVariant = 'primary' | "outlined";
 
 interface ButtonProps extends ComponentProps<'button'> {
   children: ReactNode;

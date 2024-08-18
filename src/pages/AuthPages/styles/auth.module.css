@@ -57,6 +57,12 @@
   gap: 30px;
 }
 
+.checkbox_block{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .link {
   display: inline-block;
   text-decoration: underline;

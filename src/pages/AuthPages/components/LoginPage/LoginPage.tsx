@@ -1,12 +1,10 @@
-import { Typography } from '@/shared/Typography/Typography';
+import { Typography, Button, Input, Checkbox } from '@/shared';
 import styles from '../../styles/auth.module.css';
-import { Button, Input } from '@/shared';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, loginSchema } from '../../constans/loginSchema';
 import AuthImg from '@/assets/images/auth-img.png';
 import { Link } from 'react-router-dom';
-import { Checkbox } from '@/shared/Checkbox/Checkbox';
 import { useRef } from 'react';
 import ArrowSvg from '@/assets/svg/arrow.svg';
 
@@ -63,7 +61,7 @@ export const LoginPage = () => {
               />
             </div>
             <div className={styles.options}>
-              <Checkbox ref={checkboxRef}>Запомнить меня</Checkbox>
+              <Checkbox ref={checkboxRef} label='Запомнить меня'/>
               <Link className={styles.link} to='/auth/register'>
                 Перейти к регестрации
               </Link>

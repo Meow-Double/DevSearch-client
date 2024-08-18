@@ -1,0 +1,10 @@
+.title{
+    margin-bottom: 30px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    line-height: 125%;
+}

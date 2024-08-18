@@ -1,15 +1,18 @@
-import { Typography } from '@/shared/Typography/Typography';
-import { Button, Input } from '@/shared';
+import { Typography, Checkbox, Button, Input } from '@/shared';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import AuthImg from '@/assets/images/auth-img.png';
 import { Link } from 'react-router-dom';
 import styles from '../../styles/auth.module.css';
 import { registerSchema, RegisterSchema } from '../../constans/registerSchema';
-import { Checkbox } from '@/shared/Checkbox/Checkbox';
 import ArrowSvg from '@/assets/svg/arrow.svg';
+import { ModalWindow } from '../ModalWindow/ModalWindow';
+import { useModal } from '../../store/store';
 
 export const RegisterPage = () => {
+
+  const setIsOpen = useModal(state => state.setIsOpen);
+
   const {
     register,
     handleSubmit,
@@ -77,7 +80,10 @@ export const RegisterPage = () => {
               />
             </div>
             <div className={styles.options}>
-              <Checkbox>Политика сайта</Checkbox>
+              <div className={styles.checkbox_block}>
+                <Checkbox />
+                <Button onClick={setIsOpen} variant='outlined'>Политика сайта</Button>
+              </div>
               <Link className={styles.link} to='/auth'>
                 Перейти к авторизации
               </Link>
@@ -86,6 +92,7 @@ export const RegisterPage = () => {
           </form>
         </div>
       </div>
+      <ModalWindow />
     </div>
   );
 };
