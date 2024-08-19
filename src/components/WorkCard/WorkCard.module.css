@@ -22,3 +22,10 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+@media screen and (width <= 670px) {
+
+    .card{
+        justify-self: center;
+    }
+}

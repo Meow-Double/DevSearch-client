@@ -7,6 +7,7 @@ import AuthImg from '@/assets/images/auth-img.png';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import ArrowSvg from '@/assets/svg/arrow.svg';
+import { postLogin } from '@/api/requests/user/login';
 
 export const LoginPage = () => {
   const checkboxRef = useRef<HTMLInputElement>(null);
@@ -21,7 +22,7 @@ export const LoginPage = () => {
   });
 
   const onSubmit = (values: LoginSchema) => {
-    alert(JSON.stringify(values) + checkboxRef.current?.checked);
+    postLogin({ params: values });
   };
 
   return (
@@ -61,7 +62,7 @@ export const LoginPage = () => {
               />
             </div>
             <div className={styles.options}>
-              <Checkbox ref={checkboxRef} label='Запомнить меня'/>
+              <Checkbox ref={checkboxRef} label='Запомнить меня' />
               <Link className={styles.link} to='/auth/register'>
                 Перейти к регестрации
               </Link>

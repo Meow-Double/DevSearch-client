@@ -1,5 +1,6 @@
 import { WorkCard } from '@/components';
 import styles from './HomePage.module.css';
+import { Button, Input, Tag } from '@/shared';
 
 const array = [
   {
@@ -36,9 +37,39 @@ const array = [
   }
 ];
 
+const Tags = [
+  'React',
+  'nodejs',
+  'html',
+  'css',
+  'typescript',
+  'ts',
+  'express',
+  'next',
+  'nest',
+  'jest',
+  'vitest',
+  "react-router-dom",
+  "tanstackQuery",
+  "rtk query",
+  "graphql",
+  "websockets"
+];
+
 export const HomePage = () => {
   return (
     <div className='container'>
+      <div className={styles.search}>
+        <Input component='input' variant='primary' placeholder='Введите название' />
+        <Button variant='primary'>Найти</Button>
+      </div>
+      <div className={styles.tags}>
+        {Tags.map((tag) => (
+          <Tag key={tag} variant='work'>
+            {tag}
+          </Tag>
+        ))}
+      </div>
       <ul className={styles.cards}>
         {array.map((item) => (
           <WorkCard key={item.id} {...item} />

@@ -4,9 +4,75 @@
   padding-block: 20px;
 }
 
-.menu{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.profile {
+  display: flex;
+  width: 100%;
+  max-width: 160px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--background-color);
+  border-radius: 200px;
+  margin-left: auto;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.name {
+  width: 100%;
+  padding: 12px 0 12px 20px;
+  text-align: center;
+
+}
+
+.img {
+  width: 42px;
+  height: 42px;
+  border-radius: 200px;
+  object-fit: cover;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 4px);
+  width: 100%;
+  max-width: 240px;
+  border: 1px solid var(--background-color);
+  border-radius: 4px;
+  background-color: var(--section-color);
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+  padding-block: 12px;
+}
+
+.item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 12px;
+  padding-block: 8px;
+  padding-inline: 20px;
+
+  &:hover {
+    background-color: var(--background-color);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.profile_block {
+  position: relative;
+  width: 100%;
+  max-width: 160px;
 }

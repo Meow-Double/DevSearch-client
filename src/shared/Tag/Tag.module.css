@@ -1,12 +1,13 @@
 .tag {
   min-width: 40px;
-  max-width: 120px;
+  max-width: 2400px;
   padding: 4px 12px;
   border: 1px solid transparent;
   border-radius: 200px;
   background-color: var(--section-color);
   font-size: 16px;
   font-weight: 400;
+  
 }
 
 .work {

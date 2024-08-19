@@ -8,10 +8,10 @@ import { registerSchema, RegisterSchema } from '../../constans/registerSchema';
 import ArrowSvg from '@/assets/svg/arrow.svg';
 import { ModalWindow } from '../ModalWindow/ModalWindow';
 import { useModal } from '../../store/store';
+import { postRegistration } from '@/api/requests';
 
 export const RegisterPage = () => {
-
-  const setIsOpen = useModal(state => state.setIsOpen);
+  const setIsOpen = useModal((state) => state.setIsOpen);
 
   const {
     register,
@@ -23,7 +23,8 @@ export const RegisterPage = () => {
   });
 
   const onSubmit = (values: RegisterSchema) => {
-    alert(JSON.stringify(values));
+    const { confirmPassword, ...data } = values;
+    postRegistration({ params: data });
   };
 
   return (
@@ -82,7 +83,9 @@ export const RegisterPage = () => {
             <div className={styles.options}>
               <div className={styles.checkbox_block}>
                 <Checkbox />
-                <Button onClick={setIsOpen} variant='outlined'>Политика сайта</Button>
+                <Button onClick={setIsOpen} variant='outlined'>
+                  Политика сайта
+                </Button>
               </div>
               <Link className={styles.link} to='/auth'>
                 Перейти к авторизации
