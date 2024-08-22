@@ -3,7 +3,12 @@ import { ComponentProps, ReactNode } from 'react';
 
 export type TypographyTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'p';
 
-export type TypographyVariant = 'title16_regular' | "title24_bold";
+export type TypographyVariant =
+  | 'title16_regular'
+  | 'title20_regular'
+  | 'title16_medium'
+  | 'title20_medium'
+  | 'title24_bold';
 
 type TypographyProps<Tag extends TypographyTags> = ComponentProps<Tag> & {
   children: ReactNode;

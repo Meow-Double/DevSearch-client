@@ -3,6 +3,21 @@
   font-weight: 400;
 }
 
+.title16_medium {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.title20_regular {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.title20_medium {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .title24_bold {
   font-size: 24px;
   font-weight: 700;

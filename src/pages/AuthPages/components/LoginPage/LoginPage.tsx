@@ -4,13 +4,16 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, loginSchema } from '../../constans/loginSchema';
 import AuthImg from '@/assets/images/auth-img.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import ArrowSvg from '@/assets/svg/arrow.svg';
 import { postLogin } from '@/api/requests/user/login';
+import { useUser } from '../../store/store';
 
 export const LoginPage = () => {
   const checkboxRef = useRef<HTMLInputElement>(null);
+  const { setUser, setIsAuth } = useUser((state) => state);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -21,8 +24,14 @@ export const LoginPage = () => {
     mode: 'onBlur'
   });
 
-  const onSubmit = (values: LoginSchema) => {
-    postLogin({ params: values });
+  const onSubmit = async (values: LoginSchema) => {
+    const { data } = await postLogin({ params: values });
+    setUser(data.user);
+    setIsAuth(true);
+    if (checkboxRef?.current?.checked) {
+      window.localStorage.setItem('token', data.token);
+    }
+    navigate('/');
   };
 
   return (

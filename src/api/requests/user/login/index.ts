@@ -8,4 +8,4 @@ interface PostLoginParams {
 type PostLoginConfig = AxiosRequestConfig<PostLoginParams>;
 
 export const postLogin = ({ params, config }: PostLoginConfig) =>
-  api.post('/user/login', params, config);
+  api.post<UserAnswer>('/user/login', params, config);

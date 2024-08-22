@@ -2,16 +2,20 @@ import { Typography, Checkbox, Button, Input } from '@/shared';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import AuthImg from '@/assets/images/auth-img.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/auth.module.css';
 import { registerSchema, RegisterSchema } from '../../constans/registerSchema';
 import ArrowSvg from '@/assets/svg/arrow.svg';
 import { ModalWindow } from '../ModalWindow/ModalWindow';
-import { useModal } from '../../store/store';
+import { useUser, useModal } from '../../store/store';
 import { postRegistration } from '@/api/requests';
+import { useRef } from 'react';
 
 export const RegisterPage = () => {
   const setIsOpen = useModal((state) => state.setIsOpen);
+  const { setUser, setIsAuth } = useUser((state) => state);
+  const navigate = useNavigate();
+  const checkboxRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -22,9 +26,15 @@ export const RegisterPage = () => {
     mode: 'onBlur'
   });
 
-  const onSubmit = (values: RegisterSchema) => {
-    const { confirmPassword, ...data } = values;
-    postRegistration({ params: data });
+  const onSubmit = async (values: RegisterSchema) => {
+    if (checkboxRef.current?.checked) {
+      const { confirmPassword, ...otherData } = values;
+      const { data } = await postRegistration({ params: otherData });
+      setUser(data.user);
+      setIsAuth(true);
+      window.localStorage.setItem('token', data.token);
+      navigate('/');
+    }
   };
 
   return (
@@ -82,7 +92,7 @@ export const RegisterPage = () => {
             </div>
             <div className={styles.options}>
               <div className={styles.checkbox_block}>
-                <Checkbox />
+                <Checkbox ref={checkboxRef} />
                 <Button onClick={setIsOpen} variant='outlined'>
                   Политика сайта
                 </Button>
