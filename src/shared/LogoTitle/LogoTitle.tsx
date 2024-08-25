@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { ComponentProps, ReactNode } from 'react';
 import styles from './LogoTitle.module.css';
 import { Typography, TypographyTags, TypographyVariant } from '../Typography/Typography';
+import { Link } from 'react-router-dom';
 
 type LogoTitleExcludeTags = 'div' | 'p';
 
@@ -25,14 +26,16 @@ export const LogoTitle = <Tag extends LogoTitleTags = 'h2'>({
   ...props
 }: LogoTitleProps<Tag>) => {
   return (
-    <Typography
-      className={clsx(styles.title, className)}
-      tag={tag}
-      variant='title16_regular'
-      {...props}
-    >
-      <span className={styles.text}>{text}</span>
-      <span className={styles.children}>{children}</span>
-    </Typography>
+    <Link to="/">
+      <Typography
+        className={clsx(styles.title, className)}
+        tag={tag}
+        variant='title24_bold'
+        {...props}
+      >
+        <span className={styles.text}>{text}</span>
+        <span className={styles.children}>{children}</span>
+      </Typography>
+    </Link>
   );
 };

@@ -1,9 +1,20 @@
 import { Button, Typography } from '@/shared';
 import styles from './ProfilePage.module.css';
 import { useUser } from '../AuthPages/store/store';
+import { useNavigate } from 'react-router-dom';
+import { ResumeList, ResumeListProps } from '@/components';
+import { useEffect, useState } from 'react';
+import { getResume } from '@/api/requests/resume';
 
 export const ProfilePage = () => {
   const user = useUser((state) => state.user);
+  const [resumeData, setResumeData] = useState<ResumeListProps>();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getResume({ params: { id: user?.id ? user?.id : '' } }).then((res) => setResumeData(res.data));
+  }, [user]);
 
   return (
     <div className='container'>
@@ -21,11 +32,17 @@ export const ProfilePage = () => {
             {user?.email}
           </Typography>
         </div>
-        <div className={styles.resume}>
-          <p>Резюме отсуствует.</p>
-          <p >Хотите создать его?</p>
-          <Button className={styles.btn} variant='primary'>Создать резюме</Button>
-        </div>
+        {resumeData ? (
+          <ResumeList {...resumeData} />
+        ) : (
+          <div className={styles.resume}>
+            <p>Резюме отсуствует.</p>
+            <p>Хотите создать его?</p>
+            <Button onClick={() => navigate('/resume')} className={styles.btn} variant='primary'>
+              Создать резюме
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,27 @@
+.menu {
+  width: 100%;
+  max-width: 240px;
+  border-radius: 4px;
+  background-color: var(--background-color);
+}
+
+.item {
+  border: 1px solid var(--background-color);
+  border-left: 2px solid var(--section-color);
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: var(--section-color);
+  }
+}
+
+.link {
+  display: inline-block;
+  width: 100%;
+  padding-block: 8px;
+  padding-inline: 20px;
+}
+
+.active {
+  background-color: var(--section-color);
+}

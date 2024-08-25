@@ -1,6 +1,6 @@
 .inner {
   display: grid;
-  gap: 20px;
+  gap: 60px;
   grid-template-columns: 220px auto;
   padding-block: 20px;
 }

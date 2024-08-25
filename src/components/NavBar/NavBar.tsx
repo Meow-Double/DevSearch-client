@@ -9,6 +9,34 @@ import SummarySvg from '@/assets/svg/summary.svg';
 import { useUser } from '@/pages/AuthPages/store/store';
 import { Link, useNavigate } from 'react-router-dom';
 
+const menuItems = [
+  {
+    name: 'Профиль',
+    path: '/profile',
+    icon: ProfileSvg
+  },
+  {
+    name: 'Настройки',
+    path: '/settings',
+    icon: Settingsvg
+  },
+  {
+    name: 'Резюме',
+    path: '/resume',
+    icon: SummarySvg
+  },
+  {
+    name: 'отклики',
+    path: '/responses',
+    icon: ResponsesSvg
+  },
+  {
+    name: 'Выйти',
+    path: '/auth',
+    icon: ExitSvg
+  }
+];
+
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuth, setIsAuth } = useUser((state) => state);
@@ -18,10 +46,14 @@ export const NavBar = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const onExitProfile = () => {
-    window.localStorage.removeItem('token');
-    setIsAuth(false);
-    navigate('/auth');
+  const toNavigate = (path: string) => {
+    navigate(path);
+    setIsOpen((prev) => !prev);
+
+    if (path === '/auth') {
+      window.localStorage.removeItem('token');
+      setIsAuth(false);
+    }
   };
 
   return (
@@ -45,21 +77,27 @@ export const NavBar = () => {
 
               {isOpen && (
                 <ul className={styles.dropdown}>
-                  <li className={styles.item}>
+                  {menuItems.map((item) => (
+                    <li className={styles.item} onClick={() => toNavigate(item.path)}>
+                      <span>{item.name}</span>{' '}
+                      <img className={styles.icon} src={item.icon} alt={item.name} />
+                    </li>
+                  ))}
+                  {/* <li className={styles.item}>
                     Профиль <img className={styles.icon} src={ProfileSvg} alt='' />
-                  </li>
-                  <li className={styles.item}>
+                  </li> */}
+                  {/* <li className={styles.item}>
                     Настройки <img className={styles.icon} src={Settingsvg} alt='' />
-                  </li>
-                  <li className={styles.item}>
+                  </li> */}
+                  {/* <li className={styles.item}>
                     резюме <img className={styles.icon} src={SummarySvg} alt='' />
-                  </li>
-                  <li className={styles.item}>
+                  </li> */}
+                  {/* <li className={styles.item}>
                     отклики <img className={styles.icon} src={ResponsesSvg} alt='' />
                   </li>
                   <li className={styles.item} onClick={onExitProfile}>
                     Выйти <img className={styles.icon} src={ExitSvg} alt='' />
-                  </li>
+                  </li> */}
                 </ul>
               )}
             </div>

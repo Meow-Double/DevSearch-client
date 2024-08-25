@@ -1,0 +1,30 @@
+.wrapper{
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 640px auto;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contacts_form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 20px;
+  }
+
+
+  .contacts_list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn{
+    width: 100%;
+    align-self: flex-start;
+  }

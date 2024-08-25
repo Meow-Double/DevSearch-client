@@ -5,15 +5,19 @@
   max-width: max-content;
   height: 32px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 4px 20px;
-  border: 1px solid transparent;
   border-radius: 200px;
   background-color: var(--section-color);
-  font-size: 16px;
-  line-height: 100%;
+  gap: 12px;
 }
 
-.work {
-  background-color: var(--accent-color);
+.btn {
+  width: 24px;
+  height: 24px;
+}
+
+.icon {
+  width: inherit;
+  height: inherit;
 }
