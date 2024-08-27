@@ -1,0 +1,25 @@
+.block {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 320px auto;
+  }
+  
+  .title{
+      margin-bottom: 20px;
+  }
+  
+  .info{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+  
+  .desc {
+    width: 100%;
+    max-width: 320px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-left: 2px solid var(--section-color);
+  }
+  

@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.btn {
+  width: 240px;
+  margin-left: auto;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

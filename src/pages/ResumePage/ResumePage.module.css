@@ -60,6 +60,7 @@
   padding-block: 40px;
 }
 
-.section{
+.section {
   width: 100%;
+  max-width: 640px;
 }

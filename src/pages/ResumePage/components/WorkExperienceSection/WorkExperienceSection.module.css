@@ -1,24 +1,23 @@
-
 .form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.contacts_form {
+.row {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
-}
-
-.contacts_list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 }
 
 .btn {
   width: 240px;
   margin-left: auto;
 }
+
+/* .work_experience{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+} */

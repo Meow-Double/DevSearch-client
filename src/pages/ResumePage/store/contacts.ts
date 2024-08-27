@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 type ContactTypes = {
   name: string;
-  link: string;
+  path: string;
 };
 interface UseContactsResumeTypes {
   contacts: ContactTypes[];
@@ -13,11 +13,11 @@ interface UseContactsResumeTypes {
 export const useContactsResume = create<UseContactsResumeTypes>((set, get) => ({
   contacts: [],
   addContacts: (contact) => {
-    const isFind = get().contacts.find((item) => item.link === contact.link);
+    const isFind = get().contacts.find((item) => item.path === contact.path);
     if (!isFind) {
       set(() => ({ contacts: [...get().contacts, contact] }));
     }
   },
   removeContacts: (contact) =>
-    set(() => ({ contacts: get().contacts.filter((item) => item.link !== contact.link) }))
+    set(() => ({ contacts: get().contacts.filter((item) => item.path !== contact.path) }))
 }));

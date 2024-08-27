@@ -165,26 +165,55 @@ import { AsideMenu } from '@/components';
 import styles from './ResumePage.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { GeneralSection } from './components';
+import { GeneralSection, SkillsSection, WorkExperienceSection } from './components';
+import { getGeneralResume } from '@/api/requests/resume/general';
+import { useGeneralResume } from './store/general';
 
 export const ResumePage = () => {
   const params = useParams();
   const navigate = useNavigate();
- 
-
+  const { setData } = useGeneralResume((state) => state);
 
   useEffect(() => {
     console.log('s');
     if (!params.id) {
       navigate('/resume/general');
     }
+  }, [params]);
+
+  // const sections = [
+  //   { path: 'general', component: <GeneralSection /> },
+  //   { path: 'work-experience', component: <WorkExperienceSection /> }
+  // ];
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token');
+
+    getGeneralResume({ config: { headers: { Authorization: token } } }).then((res) =>
+      setData(res.data)
+    );
   }, []);
 
   return (
     <div className='container'>
       <div className={styles.inner}>
         <AsideMenu />
-        <div className={styles.section}>{params.id === 'general' && <GeneralSection />}</div>
+        {/* <div className={styles.section}>{params.id === sections?.path && sections?.component}</div> */}
+        {params.id === 'general' && (
+          <div className={styles.section}>
+            <GeneralSection />
+          </div>
+        )}
+        {params.id === 'work-experience' && (
+          <div className={styles.section}>
+            <WorkExperienceSection />
+          </div>
+        )}
+        {params.id === 'skills' && (
+          <div className={styles.section}>
+            <SkillsSection />
+          </div>
+        )}
       </div>
     </div>
   );
