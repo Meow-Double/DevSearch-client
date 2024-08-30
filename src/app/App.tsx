@@ -3,8 +3,8 @@ import { PARAMS, ROUTES } from './configs/routes';
 import { Layout } from './components';
 import { HomePage, LoginPage, NotFoundPage, ProfilePage, RegisterPage, ResumePage } from '@/pages';
 import { useEffect } from 'react';
-import { getAuth } from '@/api/requests/user/auth';
-import { useUser } from '@/pages/AuthPages/store/store';
+import { getAuth } from '@/api/requests';
+import { useUser } from '@/pages/AuthPages/store';
 
 const App = () => {
   const { isAuth, setUser, setIsAuth } = useUser((state) => state);

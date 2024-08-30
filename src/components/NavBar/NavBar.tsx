@@ -6,7 +6,7 @@ import ProfileSvg from '@/assets/svg/profile.svg';
 import ResponsesSvg from '@/assets/svg/responses.svg';
 import Settingsvg from '@/assets/svg/settings.svg';
 import SummarySvg from '@/assets/svg/summary.svg';
-import { useUser } from '@/pages/AuthPages/store/store';
+import { useUser } from '@/pages/AuthPages/store/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
 const menuItems = [

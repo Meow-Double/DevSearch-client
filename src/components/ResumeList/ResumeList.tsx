@@ -1,20 +1,14 @@
 import { Tag, Typography } from '@/shared';
 import styles from './ResumeList.module.css';
 
-export interface ResumeListProps {
+export interface ResumeListProps extends ResumeData {
   name: string;
   specialization: string;
-  workExperience: workExperienceType[];
-  technologies: [];
-  skills: [];
+  workExperience: WorkExperienceTypes[];
+  technologies: string[];
+  skills: string[];
 }
-type workExperienceType = {
-  id: string;
-  years: number;
-  months: number;
-  company_name: string;
-  desc: string;
-};
+
 export const ResumeList = ({
   name,
   specialization,
@@ -36,8 +30,8 @@ export const ResumeList = ({
             Опыт работы:
           </Typography>
           <ul>
-            {workExperience.map((item) => (
-              <li className={styles.work_block} key={item.id}>
+            {workExperience.map((item, index) => (
+              <li className={styles.work_block} key={index}>
                 <div className={styles.work_info}>
                   <Typography variant='title16_regular' tag='h4' className={styles.work_date}>
                     {item.years} года {item.months} месяцев

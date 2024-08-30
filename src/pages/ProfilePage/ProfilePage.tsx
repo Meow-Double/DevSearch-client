@@ -1,19 +1,23 @@
 import { Button, Typography } from '@/shared';
 import styles from './ProfilePage.module.css';
-import { useUser } from '../AuthPages/store/store';
+import { useUser } from '../AuthPages/store/auth';
 import { useNavigate } from 'react-router-dom';
-import { ResumeList, ResumeListProps } from '@/components';
+import { ResumeList } from '@/components';
 import { useEffect, useState } from 'react';
 import { getResume } from '@/api/requests/resume';
 
 export const ProfilePage = () => {
   const user = useUser((state) => state.user);
-  const [resumeData, setResumeData] = useState<ResumeListProps>();
+  const [resumeData, setResumeData] = useState<ResumeData>();
 
   const navigate = useNavigate();
 
+  const setResume = async () => {
+    const { data } = await getResume({});
+    setResumeData(data);
+  };
   useEffect(() => {
-    getResume({ params: { id: user?.id ? user?.id : '' } }).then((res) => setResumeData(res.data));
+    setResume();
   }, [user]);
 
   return (

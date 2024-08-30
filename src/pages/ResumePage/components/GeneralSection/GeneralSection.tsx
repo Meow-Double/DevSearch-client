@@ -5,17 +5,17 @@ import { Tag } from '../Tag/Tag';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { GeneralSchema, generalSchema } from '../../constanc/GeneralSchema';
-import { useGeneralResume } from '../../store/general';
-import { patchGeneralResume } from '@/api/requests/resume/general/id';
+
+import { useGeneral } from '../../hooks/useGeneral';
+import { useContacts } from '../../hooks/useContacts';
+import { postUpdateResume } from '@/api/requests';
 
 export const GeneralSection = () => {
-  // const { addContacts, contacts, removeContacts } = useContactsResume((state) => state);
+  const { addContact, contacts, removeContact } = useContacts();
 
   const [value, setValue] = useState('');
   const [link, setLink] = useState('');
-  const { about, name, specialization, contacts, addContact, removeContact } = useGeneralResume(
-    (state) => state
-  );
+  const { about, name, specialization } = useGeneral();
 
   const {
     register,
@@ -38,11 +38,15 @@ export const GeneralSection = () => {
   };
 
   const onSubmit = (values: GeneralSchema) => {
+    const token = window.localStorage.getItem('token');
     const allValues = {
       ...values,
       contacts
     };
-    patchGeneralResume({ params: { id: 'test', ...allValues } });
+    postUpdateResume({
+      params: { ...allValues },
+      config: { headers: { Authorization: token } }
+    });
   };
 
   return (

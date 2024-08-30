@@ -1,5 +1,5 @@
 import { Modal, Typography } from '@/shared';
-import { useModal } from '../../store/store';
+import { useModal } from '../../store/auth';
 import styles from './ModalWindow.module.css';
 
 export const ModalWindow = () => {

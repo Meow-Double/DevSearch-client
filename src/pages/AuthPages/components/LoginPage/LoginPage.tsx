@@ -7,8 +7,8 @@ import AuthImg from '@/assets/images/auth-img.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import ArrowSvg from '@/assets/svg/arrow.svg';
-import { postLogin } from '@/api/requests/user/login';
-import { useUser } from '../../store/store';
+import { postLogin } from '@/api/requests';
+import { useUser } from '../../store/auth';
 
 export const LoginPage = () => {
   const checkboxRef = useRef<HTMLInputElement>(null);

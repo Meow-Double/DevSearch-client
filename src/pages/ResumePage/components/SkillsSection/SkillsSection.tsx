@@ -1,19 +1,29 @@
 import { Button, Input, Typography } from '@/shared';
 import styles from './SkillsSection.module.css';
-import { useSkills } from '../../store/skills';
 import { Tag } from '../Tag/Tag';
 import { useState } from 'react';
-import { useTechnology } from '../../store/technologies';
+import { useSkills } from '../../hooks/useSkills';
+import { useTechnology } from '../../hooks/useTechnology';
+import { postUpdateResume } from '@/api/requests/resume/update';
 
 export const SkillsSection = () => {
-  const { addSkill, skills } = useSkills((state) => state);
-  const { addTechnologies, technologies} = useTechnology((state) => state);
+  const { addSkill, skills, removeSkill } = useSkills();
+  const { addTechnologies, technologies, removeTechnology } = useTechnology();
 
   const [skillValue, setSkillValue] = useState('');
   const [technologyValue, setTechnologyValue] = useState('');
+
+  const updateSkills = () => {
+    const token = window.localStorage.getItem('token');
+    postUpdateResume({
+      params: { skills, technologies },
+      config: { headers: { Authorization: token } }
+    });
+  };
+
   return (
     <form className={styles.form}>
-      <Button className={styles.btn} variant='primary' type='button'>
+      <Button onClick={updateSkills} className={styles.btn} variant='primary' type='button'>
         Сохранить
       </Button>
       <Typography variant='title20_medium' tag='h3'>
@@ -27,17 +37,15 @@ export const SkillsSection = () => {
           placeholder='JavaScript...'
           value={technologyValue}
           onChange={(e) => setTechnologyValue(e.target.value)}
-          //   {...register('company_name')}
-          //   error={errors.company_name?.message}
         />
         <Button variant='primary' type='button' onClick={() => addTechnologies(technologyValue)}>
           Добавить технологию
         </Button>
       </div>
       <ul className={styles.technologies}>
-        {technologies.map((skill) => (
-          <li key={skill}>
-            <Tag>{skill}</Tag>
+        {technologies.map((technology) => (
+          <li key={technology}>
+            <Tag onClick={() => removeTechnology(technology)}>{technology}</Tag>
           </li>
         ))}
       </ul>
@@ -52,8 +60,6 @@ export const SkillsSection = () => {
           placeholder='Английский язык - B1...'
           value={skillValue}
           onChange={(e) => setSkillValue(e.target.value)}
-          //   {...register('company_name')}
-          //   error={errors.company_name?.message}
         />
         <Button variant='primary' type='button' onClick={() => addSkill(skillValue)}>
           Добавить навык
@@ -62,11 +68,10 @@ export const SkillsSection = () => {
       <ul className={styles.skills}>
         {skills.map((skill) => (
           <li key={skill}>
-            <Tag>{skill}</Tag>
+            <Tag onClick={() => removeSkill(skill)}>{skill}</Tag>
           </li>
         ))}
       </ul>
-      
     </form>
   );
 };

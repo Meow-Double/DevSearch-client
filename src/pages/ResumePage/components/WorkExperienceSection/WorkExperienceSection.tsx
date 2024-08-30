@@ -3,8 +3,9 @@ import styles from './WorkExperienceSection.module.css';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { WorkExperienceSchema, workExperienceSchema } from '../../constanc/WorkExperienceSchema';
-import { useWorkExperience } from '../../store/workExperience';
 import { WorkExperienceData } from '@/components';
+import { postUpdateResume } from '@/api/requests/resume/update';
+import { useWork } from '../../hooks/useWork';
 
 export const WorkExperienceSection = () => {
   const {
@@ -16,15 +17,20 @@ export const WorkExperienceSection = () => {
     mode: 'onBlur'
   });
 
-  const { workExperience, addWorkExperience } = useWorkExperience((state) => state);
+  const { workExperience, addWorkExperience } = useWork();
 
   const onSubmit = (values: WorkExperienceSchema) => {
     addWorkExperience(values);
   };
 
+  const updateWorkExperience = () => {
+    const token = window.localStorage.getItem('token');
+    postUpdateResume({ params: { workExperience }, config: { headers: { Authorization: token } } });
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <Button className={styles.btn} variant='primary' type='button'>
+      <Button className={styles.btn} variant='primary' type='button' onClick={updateWorkExperience}>
         Сохранить
       </Button>
       <Typography variant='title20_medium' tag='h3'>

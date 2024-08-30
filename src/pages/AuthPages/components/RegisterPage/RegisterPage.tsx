@@ -7,7 +7,7 @@ import styles from '../../styles/auth.module.css';
 import { registerSchema, RegisterSchema } from '../../constans/registerSchema';
 import ArrowSvg from '@/assets/svg/arrow.svg';
 import { ModalWindow } from '../ModalWindow/ModalWindow';
-import { useUser, useModal } from '../../store/store';
+import { useUser, useModal } from '../../store/auth';
 import { postRegistration } from '@/api/requests';
 import { useRef } from 'react';
 
