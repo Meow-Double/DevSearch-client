@@ -1,44 +1,52 @@
-.inner{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .work_block {
   display: grid;
   gap: 20px;
-  grid-template-columns: 320px auto;
+  grid-template-columns: 240px auto;
 }
 
-.work_title{
-    margin-bottom: 20px;
+.work_title {
+  margin-bottom: 20px;
 }
 
-.work_info{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.work_specialization {
+  margin-bottom: 4px;
+}
+
+.work_info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .work_desc {
   width: 100%;
-  max-width: 320px;
   padding-top: 12px;
   padding-bottom: 20px;
   padding-left: 20px;
   border-left: 2px solid var(--section-color);
 }
 
-
-.technologies{
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-gap: 12px;
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
-.skills{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contacts_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }

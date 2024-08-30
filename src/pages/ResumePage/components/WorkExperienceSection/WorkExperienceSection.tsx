@@ -44,6 +44,14 @@ export const WorkExperienceSection = () => {
         {...register('company_name')}
         error={errors.company_name?.message}
       />
+      <Input
+        variant='primary'
+        component='input'
+        label='Кем вы работали?'
+        placeholder='Разработчиком...'
+        {...register('specialization')}
+        error={errors.company_name?.message}
+      />
       <div className={styles.row}>
         <Input
           type='number'
@@ -76,9 +84,7 @@ export const WorkExperienceSection = () => {
         Добавить информацию
       </Button>
       <ul className={styles.work_experience}>
-        {workExperience.map((item, index) => (
-          <WorkExperienceData key={index} {...item} />
-        ))}
+        {workExperience?.map((item, index) => <WorkExperienceData key={index} {...item} />)}
       </ul>
     </form>
   );

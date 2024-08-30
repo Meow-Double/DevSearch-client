@@ -5,7 +5,20 @@
   padding-block: 40px;
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .section {
   width: 100%;
   max-width: 640px;
+}
+
+.remove_btn {
+  width: 100%;
+  max-width: 237px;
+  font-size: 16px;
+  text-align: start;
 }

@@ -1,5 +1,6 @@
 export * from './Button/Button';
 export * from './Checkbox/Checkbox';
+export * from './Confirm/Confirm';
 export * from './Input/Input';
 export * from './LogoTitle/LogoTitle';
 export * from './Modal/Modal';

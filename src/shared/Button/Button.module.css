@@ -24,5 +24,19 @@
 .outlined {
   padding: 0;
   text-align: start;
-  text-transform:inherit;
+  text-transform: inherit;
+}
+
+.error {
+  background-color: var(--error-color);
+  font-size: 20px;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: var(--error-color7);
+  }
+
+  &:disabled {
+    background-color: var(--accent-color);
+  }
 }

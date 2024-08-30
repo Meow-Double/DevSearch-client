@@ -13,7 +13,8 @@ export const ProfilePage = () => {
   const navigate = useNavigate();
 
   const setResume = async () => {
-    const { data } = await getResume({});
+    const token = window.localStorage.getItem('token');
+    const { data } = await getResume({ config: { headers: { Authorization: token } } });
     setResumeData(data);
   };
   useEffect(() => {

@@ -1,0 +1,39 @@
+.overlay {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+}
+
+.body {
+  position: absolute;
+  z-index: 40;
+  top: 30px;
+  left: 50%;
+  width: 100%;
+  min-width: 200px;
+  max-width: 320px;
+  padding: 20px;
+  border: 1px solid var(--background-color);
+  border-radius: 4px;
+  background-color: var(--section-color);
+  box-shadow: 0 0 20px 2px rgb(0 0 0 / 20%);
+  transform: translateX(-50%);
+}
+
+.title {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.btn {
+  width: 100%;
+  max-width: 80px;
+  font-size: 16px;
+}

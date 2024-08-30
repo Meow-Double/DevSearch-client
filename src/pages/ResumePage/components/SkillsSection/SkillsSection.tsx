@@ -5,20 +5,24 @@ import { useState } from 'react';
 import { useSkills } from '../../hooks/useSkills';
 import { useTechnology } from '../../hooks/useTechnology';
 import { postUpdateResume } from '@/api/requests/resume/update';
+import { useGeneralResume } from '../../store/general';
 
 export const SkillsSection = () => {
   const { addSkill, skills, removeSkill } = useSkills();
   const { addTechnologies, technologies, removeTechnology } = useTechnology();
+  const name = useGeneralResume((state) => state.name);
 
   const [skillValue, setSkillValue] = useState('');
   const [technologyValue, setTechnologyValue] = useState('');
 
   const updateSkills = () => {
-    const token = window.localStorage.getItem('token');
-    postUpdateResume({
-      params: { skills, technologies },
-      config: { headers: { Authorization: token } }
-    });
+    if (name) {
+      const token = window.localStorage.getItem('token');
+      postUpdateResume({
+        params: { skills, technologies },
+        config: { headers: { Authorization: token } }
+      });
+    }
   };
 
   return (
@@ -43,7 +47,7 @@ export const SkillsSection = () => {
         </Button>
       </div>
       <ul className={styles.technologies}>
-        {technologies.map((technology) => (
+        {technologies?.map((technology) => (
           <li key={technology}>
             <Tag onClick={() => removeTechnology(technology)}>{technology}</Tag>
           </li>
@@ -66,7 +70,7 @@ export const SkillsSection = () => {
         </Button>
       </div>
       <ul className={styles.skills}>
-        {skills.map((skill) => (
+        {skills?.map((skill) => (
           <li key={skill}>
             <Tag onClick={() => removeSkill(skill)}>{skill}</Tag>
           </li>

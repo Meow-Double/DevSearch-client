@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, forwardRef, ReactNode } from 'react';
 import styles from './Button.module.css';
 
-type ButtonVariant = 'primary' | "outlined";
+type ButtonVariant = 'primary' | 'outlined' | 'error';
 
 interface ButtonProps extends ComponentProps<'button'> {
   children: ReactNode;
@@ -10,14 +10,17 @@ interface ButtonProps extends ComponentProps<'button'> {
   loading?: boolean;
 }
 
-export const Button = ({ children, variant, className, loading, ...props }: ButtonProps) => {
-  return (
-    <button
-      disabled={loading ? true : false}
-      className={clsx(styles.btn, styles[variant], className)}
-      {...props}
-    >
-      {loading ? <>Loading...</> : <>{children}</>}
-    </button>
-  );
-};
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, variant, className, loading, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        disabled={loading ? true : false}
+        className={clsx(styles.btn, styles[variant], className)}
+        {...props}
+      >
+        {loading ? <>Loading...</> : <>{children}</>}
+      </button>
+    );
+  }
+);

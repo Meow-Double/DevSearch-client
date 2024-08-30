@@ -20,6 +20,7 @@ type WorkExperienceTypes = {
   desc: string;
   years: number;
   months: number;
+  specialization;
 };
 
 interface ResumeData {

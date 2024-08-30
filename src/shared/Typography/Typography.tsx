@@ -5,8 +5,9 @@ export type TypographyTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | '
 
 export type TypographyVariant =
   | 'title16_regular'
-  | 'title20_regular'
   | 'title16_medium'
+  | 'title16_bold'
+  | 'title20_regular'
   | 'title20_medium'
   | 'title24_bold';
 

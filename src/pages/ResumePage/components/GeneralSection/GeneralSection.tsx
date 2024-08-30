@@ -105,7 +105,7 @@ export const GeneralSection = () => {
       </Button>
 
       <ul className={styles.contacts_list}>
-        {contacts.map((contact) => (
+        {contacts?.map((contact) => (
           <li key={contact.name}>
             <Tag onClick={() => removeContact(contact)} link={contact.path}>
               {contact.name}
