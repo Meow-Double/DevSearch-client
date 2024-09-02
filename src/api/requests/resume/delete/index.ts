@@ -6,5 +6,5 @@ import { api } from '@/api/instance';
 
 type DeleteResumeConfig = AxiosRequestConfig;
 
-export const deleteResume = ({ config }: DeleteResumeConfig) =>
+export const deleteResume = async ({ config }: DeleteResumeConfig) =>
   api.delete<string>(`/resume/delete`, config);

@@ -8,5 +8,5 @@ interface PostRegistrationParams {
 
 type PostRegistrationConfig = AxiosRequestConfig<PostRegistrationParams>;
 
-export const postRegistration = ({ params, config }: PostRegistrationConfig) =>
+export const postRegistration = async ({ params, config }: PostRegistrationConfig) =>
   api.post<UserAnswer>('/user/registration', params, config);

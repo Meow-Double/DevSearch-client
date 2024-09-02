@@ -48,7 +48,27 @@
   max-width: 240px;
 }
 
-.btn{
-    margin-top: 40px;
-    font-size: 16px;
+.btn {
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.btn_password {
+  max-width: 220px;
+}
+
+.link_back {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.arrow {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.link_back:hover .arrow {
+  transform: translateX(8px) rotate(90deg);
 }
