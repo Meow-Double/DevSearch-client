@@ -6,7 +6,7 @@ interface UserAnswer {
 interface UserAnswerData {
   id: string;
   email: string;
-  avatar_url: string;
+  avatarUrl: string;
   name: string;
 }
 

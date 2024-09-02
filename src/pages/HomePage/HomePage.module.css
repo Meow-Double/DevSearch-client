@@ -5,6 +5,12 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.inner {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: minmax(320px, 960px) minmax(120px, auto);
+}
+
 .search {
   display: grid;
   margin-bottom: 20px;
@@ -21,17 +27,28 @@
   gap: 12px;
 }
 
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 @media screen and (width <= 980px) {
 
-    .cards{
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (width <= 670px) {
 
-    .cards{
-        grid-template-columns: repeat(1, 1fr);
-    }
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

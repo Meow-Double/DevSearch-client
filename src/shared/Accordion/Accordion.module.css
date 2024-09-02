@@ -1,0 +1,20 @@
+.accord {
+  border-top: 2px dashed var(--section-color);
+  border-bottom: 2px dashed var(--section-color);
+}
+
+.title {
+  cursor: pointer;
+  padding-block: 12px;
+}
+
+.list {
+  display: none;
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+  gap: 4px;
+}

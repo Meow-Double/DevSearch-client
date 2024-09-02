@@ -6,17 +6,22 @@ interface WorkExperienceDataProps {
   months: number;
   desc: string;
   company_name: string;
+  specialization: string;
 }
 
 export const WorkExperienceData = ({
   years,
   months,
   desc,
-  company_name
+  company_name,
+  specialization
 }: WorkExperienceDataProps) => {
   return (
     <li className={styles.block}>
       <div className={styles.info}>
+        <Typography variant='title16_bold' tag='h4' className={styles.specialization}>
+          {specialization}
+        </Typography>
         <Typography variant='title16_regular' tag='h4' className={styles.date}>
           {years} года {months} месяцев
         </Typography>

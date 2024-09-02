@@ -1,0 +1,54 @@
+.title {
+  margin-bottom: 40px;
+}
+
+.avatarka_block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.avatarka {
+  width: 260px;
+  height: 260px;
+  border: 1px solid var(--section-color);
+  border-radius: 200px;
+  cursor: pointer;
+
+  /* &:hover {
+    filter: brightness(30%);
+  } */
+}
+
+.upload_btn {
+  width: 100%;
+}
+
+.info_block {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 260px minmax(240px, 640px);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.email_block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.email_btn {
+  width: 100%;
+  max-width: 240px;
+}
+
+.btn{
+    margin-top: 40px;
+    font-size: 16px;
+}

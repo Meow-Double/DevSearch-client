@@ -4,6 +4,10 @@ export const ROUTES = {
   REGISTER: '/auth/register',
   PROFILE: '/profile',
   RESUME: '/resume',
+  SETTINGS: '/settings',
+  RESPONSES: '/responses',
+  WORKCARD: '/work-card',
+  CREATEWORK: '/create-work',
   NOTFOUND: '*'
 };
 

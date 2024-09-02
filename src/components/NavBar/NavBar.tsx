@@ -25,8 +25,13 @@ const menuItems = [
     path: '/resume',
     icon: SummarySvg
   },
+  // {
+  //   name:"Работа", 
+  //   path: '/resume',
+  //   icon: SummarySvg
+  // },
   {
-    name: 'отклики',
+    name: 'Отклики',
     path: '/responses',
     icon: ResponsesSvg
   },
@@ -70,7 +75,7 @@ export const NavBar = () => {
                 <img
                   className={styles.img}
                   // src='https://i.pinimg.com/736x/8c/56/2f/8c562fa08cea986413a0af547c660a95.jpg'
-                  src={user?.avatar_url}
+                  src={user?.avatarUrl}
                   alt='avatarka'
                 />
               </div>

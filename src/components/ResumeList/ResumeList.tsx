@@ -1,5 +1,6 @@
 import { Tag, Typography } from '@/shared';
 import styles from './ResumeList.module.css';
+import { WorkExperienceData } from '../WorkExperienceData/WorkExperienceData';
 
 export interface ResumeListProps extends ResumeData {
   name: string;
@@ -38,24 +39,25 @@ export const ResumeList = ({
             </Typography>
             <ul>
               {workExperience.map((item, index) => (
-                <li className={styles.work_block} key={index}>
-                  <div className={styles.work_info}>
-                    <Typography
-                      variant='title16_bold'
-                      tag='h4'
-                      className={styles.work_specialization}
-                    >
-                      {item.specialization}
-                    </Typography>
-                    <Typography variant='title16_regular' tag='h4' className={styles.work_date}>
-                      {item.years} года {item.months} месяцев
-                    </Typography>
-                    <Typography variant='title16_regular' tag='h4'>
-                      {item.company_name}
-                    </Typography>
-                  </div>
-                  <div className={styles.work_desc}>{item.desc}</div>
-                </li>
+                <WorkExperienceData key={index} {...item} />
+                // <li className={styles.work_block} key={index}>
+                //   <div className={styles.work_info}>
+                //     <Typography
+                //       variant='title16_bold'
+                //       tag='h4'
+                //       className={styles.work_specialization}
+                //     >
+                //       {item.specialization}
+                //     </Typography>
+                //     <Typography variant='title16_regular' tag='h4' className={styles.work_date}>
+                //       {item.years} года {item.months} месяцев
+                //     </Typography>
+                //     <Typography variant='title16_regular' tag='h4'>
+                //       {item.company_name}
+                //     </Typography>
+                //   </div>
+                //   <div className={styles.work_desc}>{item.desc}</div>
+                // </li>
               ))}
             </ul>
           </div>

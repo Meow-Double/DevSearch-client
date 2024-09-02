@@ -8,6 +8,11 @@ import { useResume } from '@/global/store';
 import { Button, Confirm } from '@/shared';
 import { deleteResume } from '@/api/requests';
 
+// const NavigationItems = [
+//   { path: 'general', component: <GeneralSection /> },
+//   { path: 'work-experience', component: <WorkExperienceSection /> }
+// ];
+
 export const ResumePage = () => {
   const params = useParams();
   const navigate = useNavigate();

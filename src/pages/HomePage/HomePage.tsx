@@ -1,6 +1,9 @@
 import { WorkCard } from '@/components';
+import { Accordion, Button, Checkbox, Input } from '@/shared';
 import styles from './HomePage.module.css';
-import { Button, Input, Tag } from '@/shared';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../AuthPages/store';
+
 
 const array = [
   {
@@ -37,44 +40,119 @@ const array = [
   }
 ];
 
-const Tags = [
-  'React',
-  'nodejs',
-  'html',
-  'css',
-  'typescript',
-  'ts',
-  'express',
-  'next',
-  'nest',
-  'jest',
-  'vitest',
-  "react-router-dom",
-  "tanstackQuery",
-  "rtk query",
-  "graphql",
-  "websockets"
+// const Tags = [
+//   'React',
+//   'nodejs',
+//   'html',
+//   'css',
+//   'typescript',
+//   'ts',
+//   'express',
+//   'next',
+//   'nest',
+//   'jest',
+//   'vitest',
+//   'react-router-dom',
+//   'tanstackQuery',
+//   'rtk query',
+//   'graphql',
+//   'websockets'
+// ];
+
+const specializationsItems = [
+  <Checkbox label='Front-End' />,
+  <Checkbox label='Backend-End' />,
+  <Checkbox label='Unity (C#) Developer' />,
+  <Checkbox label='Game Developer' />,
+  <Checkbox label='Devops' />,
+  <Checkbox label='SRE' />,
+  <Checkbox label='UX/UI Design' />,
+  <Checkbox label='Game Design' />,
+  <Checkbox label='Another...' />
+];
+
+const workExperienceItems = [
+  <Checkbox label='Менее 1 года' />,
+  <Checkbox label='Примерно 1 год' />,
+  <Checkbox label='Менее 3 года' />,
+  <Checkbox label='Примерно 3 года' />,
+  <Checkbox label='Более 3 лет' />,
+  <Checkbox label='Более 6 лет' />
 ];
 
 export const HomePage = () => {
+  const isAuth = useUser((state) => state.isAuth);
+  const navigate = useNavigate();
+
+  // const [store, setStore] = useState([]);
+
+  // const [inputMin, setInputMin] = useState(0);
+  // const [inputMax, setInputMax] = useState(6000);
+
+  const onCreateWork = () => {
+    if (!isAuth) {
+      return navigate('/auth');
+    }
+    navigate('/create-work');
+  };
+
   return (
     <div className='container'>
-      <div className={styles.search}>
-        <Input component='input' variant='primary' placeholder='Введите название' />
-        <Button variant='primary'>Найти</Button>
+      <div className={styles.inner}>
+        <div>
+          <div className={styles.search}>
+            <Input component='input' variant='primary' placeholder='Введите название' />
+            <Button variant='primary'>Найти</Button>
+          </div>
+          {/* <div className={styles.tags}>
+            {Tags.map((tag) => (
+              <Tag key={tag} variant='work'>
+                {tag}
+              </Tag>
+            ))}
+          </div> */}
+          <ul className={styles.cards}>
+            {array.map((item) => (
+              <WorkCard key={item.id} {...item} />
+            ))}
+          </ul>
+        </div>
+        <div>
+          <div className={styles.items}>
+            <Accordion items={workExperienceItems}>Опыт работы</Accordion>
+            <Accordion items={specializationsItems}>Специализации</Accordion>
+
+            <div className={styles.price}>
+              <Input
+                component='input'
+                variant='primary'
+                placeholder='от 1$...'
+                label='Введите сумму от ($)'
+              />
+              <Input
+                component='input'
+                variant='primary'
+                placeholder='до 900$...'
+                label='Введите сумму до ($)'
+              />
+            </div>
+            <Button variant='primary'>Применить фильтры</Button>
+            {/* <DoubleRange
+              inputFrom={inputMin}
+              setInputFrom={setInputMin}
+              inputTo={inputMax}
+              setInputTo={setInputMax}
+            /> */}
+
+            {/* <Checkbox label='hello'/> */}
+            <Button variant='primary' onClick={onCreateWork}>
+              Создать вакансию
+            </Button>
+          </div>
+        </div>
       </div>
-      <div className={styles.tags}>
-        {Tags.map((tag) => (
-          <Tag key={tag} variant='work'>
-            {tag}
-          </Tag>
-        ))}
-      </div>
-      <ul className={styles.cards}>
-        {array.map((item) => (
-          <WorkCard key={item.id} {...item} />
-        ))}
-      </ul>
     </div>
   );
 };
+
+// Судя по тебе, ты 100% учишься. Надеюсь не в школе?
