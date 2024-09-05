@@ -4,7 +4,7 @@ import { Tag } from '../Tag/Tag';
 import { useState } from 'react';
 import { useSkills } from '../../hooks/useSkills';
 import { useTechnology } from '../../hooks/useTechnology';
-import { postUpdateResume } from '@/api/requests/resume/update';
+import { postUpdateResume } from '@/api/requests';
 import { useGeneralResume } from '../../store/general';
 
 export const SkillsSection = () => {

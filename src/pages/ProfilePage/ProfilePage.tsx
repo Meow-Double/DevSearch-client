@@ -4,7 +4,7 @@ import { useUser } from '../AuthPages/store/auth';
 import { useNavigate } from 'react-router-dom';
 import { ResumeList } from '@/components';
 import { useEffect, useState } from 'react';
-import { getResume } from '@/api/requests/resume';
+import { getResume } from '@/api/requests';
 
 export const ProfilePage = () => {
   const user = useUser((state) => state.user);

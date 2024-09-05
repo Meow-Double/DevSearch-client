@@ -4,7 +4,7 @@ import { UpdateEmailSchema, updateEmailSchema } from '../../constans';
 import { useEmailModal } from '../../store';
 import styles from './EmailModal.module.css';
 import { Button, Input, Modal } from '@/shared';
-import { postUpdateEmail } from '@/api/requests/user/updateEmail';
+import { postUpdateEmail } from '@/api/requests';
 
 export const EmailModal = () => {
   const { isOpen, setIsOpen } = useEmailModal((state) => state);

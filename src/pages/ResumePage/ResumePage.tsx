@@ -3,10 +3,9 @@ import styles from './ResumePage.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { GeneralSection, SkillsSection, WorkExperienceSection } from './components';
-import { getResume } from '@/api/requests/resume';
 import { useResume } from '@/global/store';
 import { Button, Confirm } from '@/shared';
-import { deleteResume } from '@/api/requests';
+import { deleteResume, getResume } from '@/api/requests';
 
 // const NavigationItems = [
 //   { path: 'general', component: <GeneralSection /> },

@@ -2,7 +2,7 @@ import { Button, FileUpload, Input, Typography } from '@/shared';
 import styles from './SettingsPage.module.css';
 import { useUser } from '../AuthPages/store';
 import { useImgFile } from '@/shared/FileUpload/store';
-import { postUpdate } from '@/api/requests/upload';
+import { postUpload } from '@/api/requests';
 import { useCallback } from 'react';
 import { useEmailModal, usePasswordModal } from './store';
 import { PasswordModal } from './components';
@@ -21,7 +21,8 @@ export const SettingsPage = () => {
     if (file) {
       const data = new FormData();
       data.append('avatarka', file);
-      postUpdate({
+
+      postUpload({
         params: data,
         config: {
           headers: {
@@ -51,7 +52,7 @@ export const SettingsPage = () => {
               </Button>
             </div>
             <div className={styles.info}>
-              <Link to="/" className={styles.link_back}>
+              <Link to='/' className={styles.link_back}>
                 <p>Главная</p> <img className={styles.arrow} src={ArrowSvg} alt='arrow' />
               </Link>
               <Input component='input' variant='primary' label='Ваше имя' value={user?.name} />

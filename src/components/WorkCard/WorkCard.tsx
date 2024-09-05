@@ -3,31 +3,41 @@ import styles from './WorkCard.module.css';
 import { useNavigate } from 'react-router-dom';
 
 interface WorkCardProps {
-  title: string;
-  price: number;
+  specialization: string;
+  paycheck: string;
   workExperience: string;
-  desc: string;
-  company: string;
+  specialization_desc: string;
+  company_name: string;
+  id: string;
 }
 
-export const WorkCard = ({ title, price, workExperience, desc, company }: WorkCardProps) => {
+export const WorkCard = ({
+  specialization,
+  paycheck,
+  workExperience,
+  specialization_desc,
+  company_name,
+  id
+}: WorkCardProps) => {
   const navigate = useNavigate();
   return (
     <li className={styles.card}>
-      <Typography tag='h2' variant='title16_regular'>
-        {title}
-      </Typography>
-      <div className={styles.info}>
-        <Tag variant='work'>{price}$</Tag>
-        <Typography variant='title16_regular'>Опыт работы: {workExperience}</Typography>
+      <div className={styles.info_block}>
+        <Typography tag='h2' variant='title16_regular'>
+          {specialization}
+        </Typography>
+        <div className={styles.info}>
+          <Tag variant='work'>{paycheck}</Tag>
+          <Typography variant='title16_regular'>Опыт работы: {workExperience}</Typography>
+        </div>
+        <Typography variant='title16_regular' tag='h4'>
+          Компания: {company_name}
+        </Typography>
+        <Typography tag='p' variant='title16_regular' className={styles.desc}>
+          {specialization_desc}
+        </Typography>
       </div>
-      <Typography variant='title16_regular' tag='h4'>
-        Компания: {company}
-      </Typography>
-      <Typography tag='p' variant='title16_regular' className={styles.desc}>
-        {desc}
-      </Typography>
-      <Button onClick={() => navigate('/work-card')} variant='primary'>
+      <Button onClick={() => navigate(`/work-card/${id}`)} variant='primary'>
         Подробнее
       </Button>
     </li>

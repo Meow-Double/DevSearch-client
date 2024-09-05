@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { WorkExperienceSchema, workExperienceSchema } from '../../constanc/WorkExperienceSchema';
 import { WorkExperienceData } from '@/components';
-import { postUpdateResume } from '@/api/requests/resume/update';
+import { postUpdateResume } from '@/api/requests';
 import { useWork } from '../../hooks/useWork';
 
 export const WorkExperienceSection = () => {

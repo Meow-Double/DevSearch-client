@@ -8,11 +8,13 @@ type FileUploadVariants = 'avatar' | 'default';
 interface FileUploadProps extends ComponentProps<'div'> {
   children?: ReactNode;
   variant: FileUploadVariants;
+  setFile?: (file: File) => void;
+  setUrl?: (url: string) => void;
 }
-export const FileUpload = ({ children, variant, className }: FileUploadProps) => {
+export const FileUpload = ({ children, variant, className, setFile, setUrl }: FileUploadProps) => {
   const [fileImg, setFileImg] = useState<File | null>(null);
-  const setUrl = useImgFile((state) => state.setUrl);
-  const setFile = useImgFile((state) => state.setFile);
+  const setImgUrl = useImgFile((state) => state.setUrl);
+  const setImgFile = useImgFile((state) => state.setFile);
 
   const text = children ? children : 'загрузите файл';
 
@@ -26,9 +28,9 @@ export const FileUpload = ({ children, variant, className }: FileUploadProps) =>
       const file = e.target.files[0];
 
       const url = file && URL.createObjectURL(file);
-      setUrl(url);
+      setUrl ? setUrl(url) : setImgUrl(url);
       setFileImg(file);
-      setFile(file);
+      setFile ? setFile(file) : setImgFile(file);
     }
   };
 
