@@ -1,0 +1,25 @@
+
+.column {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--section-color);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* .row:nth-child(even) {
+  background-color: var(--section-color);
+  border: 1px solid var(--primary-color);
+} */
+
+.row:nth-child(even) .column {
+  border: 1px solid var(--background-color);
+  background-color: var(--section-color);
+}
+
+.link {
+  text-decoration: underline;
+}

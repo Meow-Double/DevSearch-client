@@ -1,3 +1,4 @@
+export * from './respond';
 export * from './resume';
 export * from './resume/delete';
 export * from './resume/update';

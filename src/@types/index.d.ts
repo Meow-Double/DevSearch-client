@@ -45,11 +45,17 @@ interface WorkTypes {
   specialization_desc: string;
   job_desc: string;
   technologies: string[];
-  watching_number: number;
-  responded_number: number;
+  watching: PersonWatching[];
+  responded: PersonWatching[];
   author: AuthorWorkCardTypes;
   backgroundImg: string;
 }
+
+type PersonWatching = {
+  name: string;
+  id: string;
+  avatarUrl: string;
+};
 
 type ExcludeWorkTypes = {
   _id: string;
@@ -92,3 +98,21 @@ interface AnswerUploadTypes {
   path: string;
   size: number;
 }
+
+interface WatchingTypes {
+  id: string;
+  specialization: string;
+  responded: AuthorWorkCardTypes[];
+  watching: AuthorWorkCardTypes[];
+}
+
+type WatchingsType = WatchingTypes[];
+
+interface RespondTypes {
+  company_name: string;
+  specialization: string;
+  status: string;
+  workId: string;
+}
+
+type RespondsType = RespondTypes[];

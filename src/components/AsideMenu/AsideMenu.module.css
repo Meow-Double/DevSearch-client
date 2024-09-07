@@ -7,7 +7,8 @@
 
 .item {
   border: 1px solid var(--background-color);
-  border-left: 2px solid var(--section-color);
+
+  /* border-left: 2px solid var(--section-color); */
   text-transform: capitalize;
 
   &:hover {

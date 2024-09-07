@@ -2,7 +2,7 @@ import { Button, Tag, Typography } from '@/shared';
 import styles from './WorkCardPage.module.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getWork } from '@/api/requests';
+import { getWork, postResponds } from '@/api/requests';
 import { useWorkData } from './store';
 
 export const WorkCardPage = ({}) => {
@@ -14,6 +14,17 @@ export const WorkCardPage = ({}) => {
       getWork({ params: { id } }).then((res) => setWorkData(res.data));
     }
   }, [id]);
+
+  const onRespondWork = () => {
+    const token = window.localStorage.getItem('token');
+    const respondItems = {
+      status: 'Ожидание',
+      workId: id ?? '',
+      specialization: workData?.specialization ?? '',
+      company_name: workData?.company_name ?? ''
+    };
+    postResponds({ params: respondItems, config: { headers: { Authorization: token } } });
+  };
 
   return (
     <div className='container'>
@@ -42,14 +53,16 @@ export const WorkCardPage = ({}) => {
             </Typography>
             <p>{workData?.specialization_desc}</p>
           </div>
-          <div>
-            <Typography className={styles.title} tag='h2' variant='title20_medium'>
-              От вас требуется:
-            </Typography>
-            <ul className={styles.requirements}>
-              {workData?.requirements.map((item) => <li key={item}>- {item}</li>)}
-            </ul>
-          </div>
+          {workData?.requirements.length !== 0 && (
+            <div>
+              <Typography className={styles.title} tag='h2' variant='title20_medium'>
+                От вас требуется:
+              </Typography>
+              <ul className={styles.requirements}>
+                {workData?.requirements.map((item) => <li key={item}>- {item}</li>)}
+              </ul>
+            </div>
+          )}
           <div>
             <Typography className={styles.title} tag='h2' variant='title20_medium'>
               Чем вы будете заниматься:
@@ -62,27 +75,31 @@ export const WorkCardPage = ({}) => {
             </Typography>
             <p>{workData?.desc}</p>
           </div>
-          <div>
-            <Typography className={styles.title} tag='h2' variant='title20_medium'>
-              Используемые технологии:
-            </Typography>
-            <ul className={styles.technologies}>
-              {workData?.technologies.map((item) => (
-                <li key={item}>
-                  <Tag>{item}</Tag>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {workData?.technologies.length !== 0 && (
+            <div>
+              <Typography className={styles.title} tag='h2' variant='title20_medium'>
+                Используемые технологии:
+              </Typography>
+              <ul className={styles.technologies}>
+                {workData?.technologies.map((item) => (
+                  <li key={item}>
+                    <Tag>{item}</Tag>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className={styles.info_block}>
           <Typography variant='title20_medium' tag='h3'>
-            Откликнулись: {workData?.responded_number} человек
+            Откликнулись: {workData?.responded.length} человек
           </Typography>
           <Typography variant='title20_medium' tag='h3'>
-            Сейчас смотрят: {workData?.watching_number} человек
+            Сейчас смотрят: {workData?.watching.length} человек
           </Typography>
-          <Button variant='primary'>Откликнуться</Button>
+          <Button variant='primary' onClick={onRespondWork}>
+            Откликнуться
+          </Button>
           <div>
             <Typography variant='title20_medium' tag='h3'>
               Автор вакансии:
@@ -91,7 +108,7 @@ export const WorkCardPage = ({}) => {
               <a href='#!' className={styles.author_link}>
                 {workData?.author?.name}
               </a>
-              <img className={styles.author_img} src={workData?.author?.avatarUrl} alt='' />
+              <img className={styles.author_img} src={workData?.author?.avatarUrl} alt='avatarka' />
             </div>
           </div>
         </div>

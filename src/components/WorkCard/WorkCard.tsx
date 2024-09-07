@@ -1,4 +1,4 @@
-import { Button, Tag, Typography } from '@/shared';
+import { Button, Typography } from '@/shared';
 import styles from './WorkCard.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,16 +23,16 @@ export const WorkCard = ({
   return (
     <li className={styles.card}>
       <div className={styles.info_block}>
-        <Typography tag='h2' variant='title16_regular'>
+        <Typography tag='h2' variant='title20_medium'>
           {specialization}
         </Typography>
-        <div className={styles.info}>
-          <Tag variant='work'>{paycheck}</Tag>
-          <Typography variant='title16_regular'>Опыт работы: {workExperience}</Typography>
-        </div>
         <Typography variant='title16_regular' tag='h4'>
           Компания: {company_name}
         </Typography>
+        {/* <Tag variant='work'>{paycheck}</Tag> */}
+        <Typography variant='title16_regular'>Зарплата: {paycheck}</Typography>
+        <Typography variant='title16_regular'>Опыт работы: {workExperience}</Typography>
+
         <Typography tag='p' variant='title16_regular' className={styles.desc}>
           {specialization_desc}
         </Typography>
