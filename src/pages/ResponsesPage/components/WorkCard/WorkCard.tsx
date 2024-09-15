@@ -17,9 +17,11 @@ export const WorkCard = ({ specialization, responded, id, watching }: WorkCardPr
     <>
       <li className={styles.card}>
         <div className={styles.title_block}>
-          <Typography tag='h2' variant='title20_medium'>
-            {specialization}
-          </Typography>
+          <Button variant='outlined'>
+            <Typography tag='h2' variant='title20_medium'>
+              {specialization}
+            </Typography>
+          </Button>
           <Button
             onClick={() => setIsConfirm(true)}
             className={styles.btn_delete}
@@ -29,42 +31,48 @@ export const WorkCard = ({ specialization, responded, id, watching }: WorkCardPr
           </Button>
         </div>
         <Typography tag='h3' variant='title16_medium'>
-          Откликнулись:
+          Откликнулись: {responded.length}
         </Typography>
-        <Button variant='outlined' onClick={() => setIsOpen(true)}>
-          <ul className={styles.list}>
-            {responded.map((item, index) =>
-              index + 1 !== 7 ? (
-                <li key={item.id} className={styles.item}>
-                  <img className={styles.avatar} src={item.avatarUrl} alt='avatar' />
-                </li>
-              ) : (
-                <li key={item.id} className={clsx(styles.item_more, styles.item)}>
-                  +{responded.length}
-                </li>
-              )
-            )}
-          </ul>
-        </Button>
+        {responded.length !== 0 && (
+          <Button variant='outlined' onClick={() => setIsOpen(true)}>
+            <ul className={styles.list}>
+              {responded.map((item, index) =>
+                index + 1 !== 7 ? (
+                  <li key={item.id} className={styles.item}>
+                    <img className={styles.avatar} src={item.avatarUrl} alt='avatar' />
+                  </li>
+                ) : (
+                  <li key={item.id} className={clsx(styles.item_more, styles.item)}>
+                    +{responded.length}
+                  </li>
+                )
+              )}
+            </ul>
+          </Button>
+        )}
 
         <Typography tag='h3' variant='title16_medium'>
-          Расматриваются:
+          Расматриваются: {watching.length}
         </Typography>
-        <Button variant='outlined' onClick={() => setIsOpenT(true)}>
-          <ul className={styles.list}>
-            {watching.map((item, index) =>
-              index + 1 !== 7 ? (
-                <li key={item.id} className={styles.item}>
-                  <img className={styles.avatar} src={item.avatarUrl} alt='avatar' />
-                </li>
-              ) : (
-                <li key={item.id} className={clsx(styles.item_more, styles.item)}>
-                  +{watching.length}
-                </li>
-              )
-            )}
-          </ul>
-        </Button>
+
+        {watching.length !== 0 && (
+          <Button variant='outlined' onClick={() => setIsOpenT(true)}>
+            <ul className={styles.list}>
+              {watching.map((item, index) =>
+                index + 1 !== 7 ? (
+                  <li key={item.id} className={styles.item}>
+                    <img className={styles.avatar} src={item.avatarUrl} alt='avatar' />
+                  </li>
+                ) : (
+                  <li key={item.id} className={clsx(styles.item_more, styles.item)}>
+                    +{watching.length}
+                  </li>
+                )
+              )}
+            </ul>
+          </Button>
+        )}
+
         <Typography tag='h3' variant='title16_medium'>
           13.02.2024
         </Typography>
@@ -74,8 +82,8 @@ export const WorkCard = ({ specialization, responded, id, watching }: WorkCardPr
           Вы уверены, что хотите закрыть вакансию?
         </Confirm>
       )}
-      <RespondModal workId={id} responded={responded} isOpen={isOpen} setIsOpen={setIsOpen} />
-      <WatchingModal  watching={watching} isOpen={isOpenT} setIsOpen={setIsOpenT} />
+      <RespondModal workId={id} responded={responded} isOpen={isOpen} setIsOpen={setIsOpen} watching={watching} />
+      <WatchingModal watching={watching} isOpen={isOpenT} setIsOpen={setIsOpenT} workId={id}/>
     </>
   );
 };

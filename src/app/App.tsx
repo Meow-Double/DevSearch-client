@@ -8,6 +8,7 @@ import {
   NotFoundPage,
   ProfilePage,
   RegisterPage,
+  RespondPage,
   ResponsesPage,
   ResumePage,
   SettingsPage,
@@ -55,10 +56,11 @@ const App = () => {
             </Route>
             <Route path={ROUTES.RESPONSES} element={<Layout />}>
               <Route index element={<ResponsesPage />} />
+              <Route path={PARAMS.ID} element={<RespondPage />} />
             </Route>
             <Route path={ROUTES.WORKCARD} element={<Layout />}>
               <Route index element={<WorkCardPage />} />
-              <Route path=":id" element={<WorkCardPage />} />
+              <Route path={PARAMS.ID} element={<WorkCardPage />} />
             </Route>
             <Route path={ROUTES.CREATEWORK} element={<Layout />}>
               <Route index element={<CreateWorkPage />} />

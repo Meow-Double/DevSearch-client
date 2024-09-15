@@ -16,8 +16,14 @@
     background-color: var(--accent-color7);
   }
 
-  &:disabled {
+  /* &:disabled {
     background-color: var(--accent-color);
+  } */
+
+  &:disabled {
+    background-color: rgb(87 87 87);
+    color:var(--text-color);
+    cursor: not-allowed;
   }
 }
 
@@ -25,6 +31,8 @@
   padding: 0;
   text-align: start;
   text-transform: inherit;
+
+ 
 }
 
 .error {

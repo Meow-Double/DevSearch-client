@@ -1,21 +1,25 @@
-import { Modal, Typography } from '@/shared';
+import { Button, Modal, Typography } from '@/shared';
 import styles from './WatchingModal.module.css';
 import { Link } from 'react-router-dom';
+// import { postAddWatching } from '@/api/requests/respond/watching';
+import { postDeleteWarchingUser } from '@/api/requests/respond/watching/id';
 
 interface WatchingModalProps {
   isOpen: boolean;
   setIsOpen: (state: boolean) => void;
   watching: AuthorWorkCardTypes[];
-//   workId: string;
+  workId: string;
 }
-export const WatchingModal = ({ isOpen, setIsOpen, watching }: WatchingModalProps) => {
-//   const onAddWatching = (index: number) => {
-    // const values = {
-    //   workId,
-    //   ...watching[index]
-    // };
-    // postAddWatching({ params: values });
-//   };
+export const WatchingModal = ({ isOpen, setIsOpen, watching, workId }: WatchingModalProps) => {
+
+  const deleteUser = (userId: string) => {
+    postDeleteWarchingUser({
+      params: {
+        workId,
+        userId
+      }
+    });
+  };
 
   return (
     isOpen && (
@@ -33,9 +37,9 @@ export const WatchingModal = ({ isOpen, setIsOpen, watching }: WatchingModalProp
                   <Link to={`/profile/${item.id}`}>{item.name}</Link>
                 </Typography>
               </div>
-              {/* <Button onClick={() => onAddWatching(index)} className={styles.btn} variant='error'>
+              <Button onClick={() => deleteUser(item.id)} className={styles.btn} variant='error'>
                 Удалить
-              </Button> */}
+              </Button>
             </li>
           ))}
         </ul>

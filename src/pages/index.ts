@@ -3,6 +3,7 @@ export * from './CreateWorkPage/CreateWorkPage';
 export * from './HomePage/HomePage';
 export * from './NotFoundPage/NotFoundPage';
 export * from './ProfilePage/ProfilePage';
+export * from './RespondPage/RespondPage';
 export * from './ResponsesPage/ResponsesPage';
 export * from './ResumePage/ResumePage';
 export * from './SettingsPage/SettingsPage';
