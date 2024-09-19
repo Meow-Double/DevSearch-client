@@ -2,12 +2,19 @@
   padding-block: 40px;
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
 .btns {
   display: flex;
   width: 100%;
   max-width: 480px;
   align-items: center;
-  margin-bottom: 40px;
   gap: 20px;
 }
 
@@ -47,12 +54,16 @@
   text-decoration: underline;
 }
 
-.cards{
+.cards {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(4, 1fr);
 }
 
-.active{
+.active {
   background-color: var(--section-color);
+}
+
+.btn_create {
+  max-width: 220px;
 }

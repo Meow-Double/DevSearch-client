@@ -6,11 +6,22 @@ import { getResponds } from '@/api/requests';
 import { WorkCard } from './components';
 import { getMyWorks } from '@/api/requests/work/my-works';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../AuthPages/store';
 
 export const ResponsesPage = () => {
   const [data, setData] = useState<RespondsType>([]);
   const [items, setItems] = useState<WatchingsType>([]);
   const [activeIndex, setActiveIndex] = useState(1);
+
+  const isAuth = useUser((state) => state.isAuth);
+  const navigate = useNavigate();
+  const onCreateWork = () => {
+    if (!isAuth) {
+      return navigate('/auth');
+    }
+    navigate('/create-work');
+  };
 
   useEffect(() => {
     const token = window.localStorage.getItem('token');
@@ -25,20 +36,25 @@ export const ResponsesPage = () => {
   return (
     <div className='container'>
       <div className={styles.inner}>
-        <div className={styles.btns}>
-          <Button
-            onClick={() => setActiveIndex(1)}
-            className={clsx(styles.btn, activeIndex === 1 && styles.active)}
-            variant='primary'
-          >
-            Отклики
-          </Button>
-          <Button
-            onClick={() => setActiveIndex(0)}
-            className={clsx(styles.btn, activeIndex === 0 && styles.active)}
-            variant='primary'
-          >
-            Ваши вакансии
+        <div className={styles.menu}>
+          <div className={styles.btns}>
+            <Button
+              onClick={() => setActiveIndex(1)}
+              className={clsx(styles.btn, activeIndex === 1 && styles.active)}
+              variant='primary'
+            >
+              Отклики
+            </Button>
+            <Button
+              onClick={() => setActiveIndex(0)}
+              className={clsx(styles.btn, activeIndex === 0 && styles.active)}
+              variant='primary'
+            >
+              Ваши вакансии
+            </Button>
+          </div>
+          <Button className={styles.btn_create} variant='primary' onClick={onCreateWork}>
+            Создать вакансию
           </Button>
         </div>
         {activeIndex ? (
